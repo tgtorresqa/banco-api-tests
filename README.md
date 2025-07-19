@@ -1,74 +1,76 @@
 # banco-api-tests
 
-## Objetivo
+## Introdução
 
-Este projeto realiza testes automatizados na API REST do [banco-api](https://github.com/juliodelimas/banco-api), validando suas funcionalidades e contribuindo a qualidade de suas operações.
+Este projeto reúne testes automatizados para a API REST do [banco-api](https://github.com/juliodelimas/banco-api), desenvolvidos durante as aulas práticas da mentoria do Júlio de Lima voltadas para testes de API. O foco está em validar os principais fluxos da aplicação com testes de integração, utilizando ferramentas amplamente adotadas no mercado.
 
-## Stack utilizada
+## Tecnologias Utilizadas
 
-- **Linguagem:** JavaScript (Node.js)
-- **Framework de testes:** [Mocha](https://mochajs.org/)
-- **Biblioteca de requisições HTTP:** [Supertest](https://github.com/ladjs/supertest)
-- **Biblioteca de asserções:** [Chai](https://www.chaijs.com/)
-- **Relatórios de testes:** [Mochawesome](https://github.com/adamgruber/mochawesome)
-- **Gerenciamento de variáveis de ambiente:** [dotenv](https://github.com/motdotla/dotenv)
+- **Node.js** com **JavaScript**
+- **Mocha** – framework de testes
+- **Chai** – biblioteca de asserções
+- **Supertest** – para requisições HTTP
+- **Mochawesome** – geração de relatórios em HTML
+- **dotenv** – gerenciamento de variáveis de ambiente via `.env`
 
-## Estrutura de diretórios
+## Estrutura do Repositório
 
 ```
 banco-api-tests/
-├── test/               # Testes organizados por funcionalidades
+├── test/                    # Testes organizados por funcionalidades
 │   ├── login.test.js
 │   └── transferencias.test.js
-├── mochawesome-report/ # Diretório gerado automaticamente com o relatório HTML dos testes
-├── .env                # Arquivo para configuração da variável BASE_URL
+├── mochawesome-report/     # Relatório HTML gerado automaticamente após a execução
+├── .env                    # Variável BASE_URL da API testada
 ├── .gitignore
 ├── package.json
 └── README.md
 ```
 
-## Formato do arquivo `.env`
+## Objetivo de Cada Grupo de Arquivos
 
-Antes de rodar os testes, crie um arquivo chamado `.env` na raiz do projeto com o seguinte conteúdo:
+- `test/`: contém os arquivos de teste separados por funcionalidade da API.
+- `mochawesome-report/`: pasta gerada automaticamente com o relatório visual dos testes.
+- `.env`: onde é definida a variável `BASE_URL`, apontando para a URL da API.
+- `package.json`: lista dependências e scripts de execução dos testes.
+- `README.md`: este guia de referência para uso do projeto.
 
-```
-BASE_URL=http://localhost:3000
-```
+## Instalação e Execução
 
-Substitua `http://localhost:3000` pela URL onde a API `banco-api` está rodando.
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/banco-api-tests
+   cd banco-api-tests
+   ```
 
-## Comandos para execução
+2. Crie um arquivo `.env` com a URL da API:
+   ```env
+   BASE_URL=http://localhost:3000
+   ```
 
-Instale as dependências:
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm install
-```
+4. Execute os testes:
+   ```bash
+   npm test
+   ```
 
-Execute todos os testes:
+5. O relatório em HTML será salvo em:
+   ```
+   mochawesome-report/mochawesome.html
+   ```
 
-```bash
-npm test
-```
+### Dica: abrir o relatório automaticamente
 
-Geração automática do relatório HTML:
-
-- Após executar `npm test`, o relatório será gerado dentro da pasta `mochawesome-report/`.
-
-Sugestão: para executar os testes e abrir o relatório HTML automaticamente, adicione um script no `package.json`:
+Adicione este script no `package.json`:
 
 ```json
 "scripts": {
-  "test:report": "npm test && open mochawesome-report/mochawesome.html"
+  "test:report": "npm test && start mochawesome-report/mochawesome.html"
 }
 ```
 
-(Em Windows, substitua `open` por `start`.)
-
-## Dependências utilizadas e suas documentações
-
-- [Mocha](https://mochajs.org/) - Framework de execução de testes
-- [Supertest](https://github.com/ladjs/supertest) - Biblioteca para chamadas HTTP
-- [Chai](https://www.chaijs.com/) - Biblioteca de asserções
-- [Mochawesome](https://github.com/adamgruber/mochawesome) - Geração de relatórios em HTML
-- [dotenv](https://github.com/motdotla/dotenv) - Gerenciamento de variáveis de ambiente
+(Substitua `start` por `open` se estiver no macOS ou Linux.)
